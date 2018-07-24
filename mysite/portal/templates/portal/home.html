@@ -1,0 +1,24 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GDI Portal Site</title>
+</head>
+<body>
+<h1>Welcome to GDI Portal Site</h1>
+<img src="https://www.gdicommunications.com/images/layout/GDILogo.png"  width="250" height="250">
+<br>
+    <input type="button" onclick="location.href='http://127.0.0.1:8000/news'" value="News"/>
+    <input type="button" onclick="location.href='http://127.0.0.1:8000/calendar'" value="Calendar"/>
+    <input type="button" onclick="location.href='http://127.0.0.1:8000/profile'" value="Profile"/>
+    <input type="button" onclick="location.href='http://127.0.0.1:8000/credo'" value="Credo"/>
+{% extends "layout.html" %}
+    {% block content %}
+        {% if user.is_authenticated %}
+            <p class="display-4">Hello, {{ user.username }}</p>
+        {% else %}
+            <a class="lead" href="{% url 'login' %}">Log in</a>
+        {% endif %}
+    {% endblock content %}
+</body>
+</html>
