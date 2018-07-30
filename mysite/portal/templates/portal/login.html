@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-<br>
-<p><strong>-- OR --</strong></p>
 <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+<button onclick="goBack()" ">back</button>
 
+<script type="text/javascript">
+        function goBack(){
+            window.history.go(-1);
+        }
+</script>
 {% endblock %}

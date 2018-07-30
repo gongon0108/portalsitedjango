@@ -1,24 +1,44 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GDI Portal Site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1065322067496-bqpqmcirs9u93qt5tl5n5ef4aehne2rp.apps.googleusercontent.com">
 </head>
 <body>
+
 <h1>Welcome to GDI Portal Site</h1>
 <img src="https://www.gdicommunications.com/images/layout/GDILogo.png"  width="250" height="250">
 <br>
-    <input type="button" onclick="location.href='http://127.0.0.1:8000/news'" value="News"/>
-    <input type="button" onclick="location.href='http://127.0.0.1:8000/calendar'" value="Calendar"/>
-    <input type="button" onclick="location.href='http://127.0.0.1:8000/profile'" value="Profile"/>
-    <input type="button" onclick="location.href='http://127.0.0.1:8000/credo'" value="Credo"/>
-{% extends "layout.html" %}
-    {% block content %}
-        {% if user.is_authenticated %}
-            <p class="display-4">Hello, {{ user.username }}</p>
-        {% else %}
-            <a class="lead" href="{% url 'login' %}">Log in</a>
-        {% endif %}
-    {% endblock content %}
+    <p><a href="{% url 'news:news' %}">NEWS</a></p>
+    <p><a href="{% url 'googlecalendar:calendar' %}">CALENDAR</a></p>
+    <p><a href="{% url 'gdiprofile:profile' %}">PROFILE</a></p>
+    <p><a href="{% url 'credo:credo' %}">CREDO</a></p>
+{% if user.is_authenticated %}
+    <p><a href="{% url 'portal:login' %}">LOGIN</a></p>
+{% else %}
+    <p><a href="{% url 'portal:logout' %}">LOGOUT</a></p>
+{% endif %}
+
+<!--
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>-->
+<!--{%  if  user.is_authenticated  %}
+<p  class = "display-4" > Hello, {{  user.username  }} </p>
+<a  class= "lead"  href= "{% url 'portal:logout' %}"> Log out </a>
+{% else %} <a class = "lead" href = " {% url  'portal:login'  %} " > Log in </a>
+{%  endif  %}
+-->
 </body>
 </html>

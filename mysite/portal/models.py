@@ -18,14 +18,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-class News(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    content = models.TextField('Content')
-    created_date = models.DateTimeField(
-        default=timezone.now)
-
-class Profile(models.Model):
-    name = models.CharField(max_length=50)
-    content = models.TextField('Content')

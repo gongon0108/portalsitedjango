@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portal',
+    'portal.apps.PortalConfig',
+    'gdiprofile.apps.GdiprofileConfig',
+    'googlecalendar.apps.GooglecalendarConfig',
+    'credo.apps.CredoConfig',
+    'news.apps.NewsConfig',
     'social_django'
 ]
 
@@ -58,6 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': ['C:\Users\안건우\Documents\portal site\portalsitedjango\mysite\news\templates'],
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -133,8 +138,18 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'calendar'
+LOGOUT_REDIRECT_URL = 'first_page'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1065322067496-bqpqmcirs9u93qt5tl5n5ef4aehne2rp.apps.googleusercontent.com'  #Paste CLient Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Kilf5fDJud2oElH3Dgs1PzA6' #Paste Secret Key
+
+# disconnects
+SOCIAL_AUTH_DISCONNECT_PIPELINE = ('social.pipeline.disconnect.get_entries'
+,
+'social.pipeline.disconnect.revoke_tokens'
+,
+'social.pipeline.disconnect.disconnect')

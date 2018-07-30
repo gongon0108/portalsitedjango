@@ -18,10 +18,12 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('portal.urls')),
-    url(r'^news/', include('portal.urls')),
-    url(r'^calendar/',include('portal.urls')),
-    url(r'^credo/', include('portal.urls')),
-    url(r'^profile/', include('portal.urls')),
-    url(r'^login/', include('portal.urls')),
+    url(r'^news/', include('news.urls')),
+    url(r'^calendar/', include('googlecalendar.urls')),
+    url(r'^profile/', include('gdiprofile.urls')),
+    url(r'^credo/', include('credo.urls')),
+    url(r'^', include('portal.urls')),
+    #url(r'^logout/', include('portal.urls')),
+    #url(r'^mypage_param/(?P<my_parameter>.+)', MyAppView.DisplayMyPageWithParameter),
+
 ]
