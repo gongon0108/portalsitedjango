@@ -23,7 +23,5 @@ urlpatterns = [
     url(r'^profile/', include('gdiprofile.urls')),
     url(r'^credo/', include('credo.urls')),
     url(r'^', include('portal.urls')),
-    #url(r'^logout/', include('portal.urls')),
-    #url(r'^mypage_param/(?P<my_parameter>.+)', MyAppView.DisplayMyPageWithParameter),
 
 ]

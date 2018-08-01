@@ -27,7 +27,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com','localhost', '192.168.100.100']
 
 
 # Application definition
@@ -71,8 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                #'social_django.context_processors.backends',
+                #'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -132,24 +132,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
-    'social_core.backends.google.GoogleOpenId',  # for Google authentication
-    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    #'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    #'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    #'social_core.backends.google.GoogleOAuth2',  # for Google authentication
     'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'calendar'
-LOGOUT_REDIRECT_URL = 'first_page'
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1065322067496-bqpqmcirs9u93qt5tl5n5ef4aehne2rp.apps.googleusercontent.com'  #Paste CLient Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Kilf5fDJud2oElH3Dgs1PzA6' #Paste Secret Key
-
-# disconnects
-SOCIAL_AUTH_DISCONNECT_PIPELINE = ('social.pipeline.disconnect.get_entries'
-,
-'social.pipeline.disconnect.revoke_tokens'
-,
-'social.pipeline.disconnect.disconnect')
