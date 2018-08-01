@@ -18,11 +18,8 @@
     <p><a href="{% url 'googlecalendar:calendar' %}">CALENDAR</a></p>
     <p><a href="{% url 'gdiprofile:profile' %}">PROFILE</a></p>
     <p><a href="{% url 'credo:credo' %}">CREDO</a></p>
-{% if user.is_authenticated %}
-    <p><a href="{% url 'portal:login' %}">LOGIN</a></p>
-{% else %}
     <p><a href="{% url 'portal:logout' %}">LOGOUT</a></p>
-{% endif %}
+
 
 </body>
 </html>
